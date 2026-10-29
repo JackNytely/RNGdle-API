@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "client for rngdle.com",
   "type": "module",
   "main": "./build/index.mjs",
