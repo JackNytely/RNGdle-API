@@ -1,5 +1,8 @@
 {
-  "name": "rngdle",
+  "name": "@mimi_py/rngdle",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.3",
   "description": "client for rngdle.com",
   "type": "module",

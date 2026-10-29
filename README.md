@@ -3,7 +3,7 @@
 client for [rngdle.com](https://www.rngdle.com).
 
 ```js
-import { RngdleClient } from "rngdle";
+import { RngdleClient } from "@mimi_py/rngdle";
 
 const rngdle = new RngdleClient(process.env.RNGDLE_COOKIE);
 
