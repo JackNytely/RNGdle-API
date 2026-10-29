@@ -1,0 +1,34 @@
+{
+  "name": "rngdle",
+  "version": "0.1.3",
+  "description": "client for rngdle.com",
+  "type": "module",
+  "main": "./build/index.mjs",
+  "types": "./build/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.mts",
+      "import": "./build/index.mjs"
+    }
+  },
+  "files": [
+    "build"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "rngdle"
+  ],
+  "author": "Mimi_py",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "typescript": "^5.8.3"
+  }
+}
