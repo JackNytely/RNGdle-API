@@ -161,6 +161,22 @@ export class RngdleClient {
     return body.friends as Friend[];
   }
 
+  /** Today's roll for the logged-in user. Throws when `viewer` is empty. */
+  async getTodayRoll(): Promise<TodayRoll> {
+    this.requireCookie();
+    const response = await fetch(`${ORIGIN}/api/home`, {
+      headers: this.headers("*/*"),
+      referrer: `${ORIGIN}/`,
+    });
+    const body = await readJson(response);
+    if (!response.ok) throw httpError(response, body);
+    if (!isRecord(body)) throw new Error("roll failed");
+
+    const roll = readTodayRoll(body.viewer);
+    if (!roll) throw new Error("roll failed");
+    return roll;
+  }
+
   /** Page through `/api/users/:username/rolls` until the api says it's done. */
   async getRolls(username: string): Promise<UserRolls> {
     if (!username) throw new Error("username is required");
