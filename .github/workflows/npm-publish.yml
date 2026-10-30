@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Build and Publish to npm
 
 on:
   push:
@@ -7,21 +7,28 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org
-      - run: npm install
-      - name: Publish if this version is not on npm yet
+          bun-version: latest
+
+      # Install dependencies (using --frozen-lockfile since we are committing our lockfile)
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Publish if this version is not on npm yet
+      - name: BUN Publish if this version is not on NPM yet
         env:
+          # Token for using NPM to publish
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-        run: |
-          name=$(node -p "require('./package.json').name")
-          version=$(node -p "require('./package.json').version")
-          if npm view "$name@$version" version; then
-            echo "$name@$version is already published"
-            exit 0
-          fi
-          npm publish
+
+          # Token for using Bun to publish
+          NPM_CONFIG_TOKEN: ${{ secrets.npm_token }}
+        run: bun publish --tolerate-republish

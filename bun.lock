@@ -5,8 +5,8 @@
     "": {
       "name": "crystal-websocket",
       "devDependencies": {
-        "@types/node": "^22.16.5",
-        "typescript": "^5.8.3",
+        "@types/node": "^22.20.5",
+        "typescript": "^5.9.3",
       },
     },
   },
