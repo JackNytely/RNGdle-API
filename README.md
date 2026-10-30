@@ -16,8 +16,8 @@ Rolls are public. Friend routes need the cookie from a logged-in browser (`__Sec
 To your `Cookies` from `RNGdle`: 
  - Open the [Friends](https://www.rngdle.com/friends) tab.
  - Press Ctrl + Shift + i simultaneously or right click -> inspect.
-![descriptor](https://i.postimg.cc/3JYPhDF1/image.png)
  - Open the Network Tab from the top of the inspector.
+ ![descriptor](https://i.postimg.cc/3JYPhDF1/image.png)
  - Refresh the page, you will see a `Fetch` request `get-session`.
 ![descriptor](https://i.postimg.cc/9Mqj45DZ/image.png)
  - Open the fetch requests Headers, and look for `Cookies`.
